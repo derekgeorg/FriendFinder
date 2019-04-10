@@ -99,33 +99,33 @@
             <h2>Question 8</h2>
                 <label for="questionSelect8">This is Question 8</label>
                 <select class="form-control" id="question8">
-                        <option value="one">1 (Strongly Disagree)</option>
-                        <option value="two">2</option>
-                        <option value="three">3</option>
+                        <option value="1">1 (Strongly Disagree)</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                         <option value="four">4</option>
                         <option value="five">5 (Strongly Agree)</option>
                 </select>    
             <h2>Question 9</h2>
                 <label for="questionSelect9">This is Question 9</label>
                 <select class="form-control" id="question9">
-                        <option value="one">1 (Strongly Disagree)</option>
-                        <option value="two">2</option>
-                        <option value="three">3</option>
-                        <option value="four">4</option>
-                        <option value="five">5 (Strongly Agree)</option>
+                        <option value="1">1 (Strongly Disagree)</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 (Strongly Agree)</option>
                 </select>        
             <h2>Question 10</h2>
                 <label for="questionSelect10">This is Question 10</label>
                 <select class="form-control" id="question10">
-                        <option value="one">1 (Strongly Disagree)</option>
-                        <option value="two">2</option>
-                        <option value="three">3</option>
-                        <option value="four">4</option>
-                        <option value="five">5 (Strongly Agree)</option>
+                        <option value="1">1 (Strongly Disagree)</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5" >5 (Strongly Agree)</option>
                 </select>                    
         </div>
         <br>
-        <button type="button" class="btn btn-primary btn-lg btn-block">Submit</button>
+        <button type="button" class="btn btn-primary btn-lg btn-block" id="submit-btn">Submit</button>
         <br>
         <hr class="my-4">        
     </div>
@@ -137,9 +137,34 @@
             </div>
         </footer>
         <!-- javascript goes here -->
-        <script type="text/javascrpt">
+        <script type="text/javascript">
+        $("#submit-btn").on("click", function(event){
+            event.preventDefault();
         
+            var newFriend = {
+                name: $("#nameInput").val().trim(),
+                photo: $("#photoLink").val(),
+                scores: [
+                    $("#question1").val(),
+                    $("#question2").val(),
+                    $("#question3").val(),
+                    $("#question4").val(),
+                    $("#question5").val(),
+                    $("#question6").val(),
+                    $("#question7").val(),
+                    $("#question8").val(),
+                    $("#question9").val(),
+                    $("#question10").val(),
+                ]
+            }
         
+        $.post("/api/friends", newFriend, function(data){
+
+            console.log("home.html", data);
+            alert("Thank you for taking the Friend Finder Survey.")
+        });
+    });
+    
         </script>
     
 </body>
