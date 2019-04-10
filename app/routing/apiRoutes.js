@@ -13,13 +13,15 @@ module.exports = function(app) {
     app.post("/api/friends", function(req, res){
         var newFriend = req.body;
         console.log(req.body);
-
         // console.log(newFriend);
 
+        // Need to turn Scores array into number parseInt
+        // Compare newFriend Scores to friendArray scores
+        // Return matches
         // for (var i = 0; i < newFriend.scores.length; i++) {
         //     console.log(newFriend.scores[i])
-        //     // if (chosen === characters[i].routeName) {
-        //     // return res.json(characters[i]);
+        //     // if (newFriend === friendArray[i].routeName) {
+        //     // return res.json(friendArray.name[i]);
         //     // }
         // }
         friendsArray.push(newFriend)
